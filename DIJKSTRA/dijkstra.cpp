@@ -7,8 +7,6 @@ using namespace std;
 #define ps putchar(' ')
 #define sz(s) int((s).size())
 #define rep(i,a,b) for(int(i)=a;(i)<=(b);++(i))
-#define per(i,b,a) for(int(i)=b;(i)>=(a);--(i))
-#define clr(a) memset(a,0,sizeof(a))
 #define all(x) (x).begin(),(x).end()
 #define pb push_back
 #define mp make_pair
