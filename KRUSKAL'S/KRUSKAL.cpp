@@ -30,11 +30,9 @@ typedef pair<int,int> pii;
 
 // Optimise Input Speed
 #ifdef  __linux__
-#define LLD "%lld"
 #define _get getchar_unlocked
 inline int inp() {int n=0,s=1;char p=_get();if(p=='-')s=-1;while((p<'0'||p>'9')&&p!=EOF&&p!='-')p=_get();if(p=='-')s=-1,p=_get();while(p>='0'&&p<='9')n=(n<<3)+(n<<1)+(p-'0'),p=_get();return n*s;}
 #else
-#define LLD "%I64d"
 inline int inp() {int x;scanf("%d",&x);return x;}
 #endif
 const int N = 1e4 + 11; // max nodes
