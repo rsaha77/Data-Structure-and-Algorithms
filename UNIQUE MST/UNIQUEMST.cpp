@@ -22,69 +22,69 @@ int u[M], v[M];
 pii arr[M];
 
 inline int getPar (int x) {
-    if(par[x] != x) par[x] = getPar (par[par[x]]);
-    return par[x];
+  if(par[x] != x) par[x] = getPar (par[par[x]]);
+  return par[x];
 }
 
 inline void unite (int x, int y) {
-    int a = getPar(x), b = getPar(y);
-    if(siz[a] >= siz[b]) siz[a] += siz[b], par[b] = a;
-    else siz[b] += siz[a], par[a] = b;
+  int a = getPar(x), b = getPar(y);
+  if(siz[a] >= siz[b]) siz[a] += siz[b], par[b] = a;
+  else siz[b] += siz[a], par[a] = b;
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
+  #ifndef ONLINE_JUDGE
     freopen("in.txt","r",stdin);
-#endif
-    for(int testCase=1, t = inp(); testCase<=t; testCase++) {
-        int n=inp(), m=inp();
-        for(int i=0; i<m; i++) {
-            MarkedEdge[i] = 0;
+  #endif
+  for(int testCase=1, t = inp(); testCase<=t; testCase++) {
+    int n=inp(), m=inp();
+    for(int i=0; i<m; i++) {
+      MarkedEdge[i] = 0;
+    }
+    for(int i=0; i<m; i++) {
+      u[i] = inp(); --u[i];
+      v[i] = inp(); --v[i];
+      arr[i] = mp(inp(),i);
+    }
+    sort(arr,arr+m);
+    int cost=0;
+    for(int i=0; i<n; i++) {
+      par[i] = i;
+      siz[i] = 1;
+    }
+    for(int i=0; i<m; i++) {
+      int eno = arr[i].ss;
+      int a = getPar(u[eno]);
+      int b = getPar(v[eno]);
+      arr[i].ss = ~arr[i].ss;
+      if(a != b) {
+        ++MarkedEdge[eno];
+        unite(u[eno],v[eno]);
+        cost += arr[i].ff;
+      }
+    }
+    sort(arr,arr+m);
+    for(int i=0; i<n; i++) par[i] = i, siz[i] = 1;
+      for(int i=0; i<m; i++) {
+        int eno = ~arr[i].ss;
+        int a = getPar(u[eno]);
+        int b = getPar(v[eno]);
+        if(a != b) {
+          --MarkedEdge[eno];
+          unite(u[eno],v[eno]);
         }
-        for(int i=0; i<m; i++) {
-            u[i] = inp(); --u[i];
-            v[i] = inp(); --v[i];
-            arr[i] = mp(inp(),i);
+    ] }
+      bool ok=true;
+      for(int i=0; i<m; i++) {
+        if(MarkedEdge[i] != 0) {
+          ok = false;
+          break;
         }
-        sort(arr,arr+m);
-        int cost=0;
-        for(int i=0; i<n; i++) {
-            par[i] = i;
-            siz[i] = 1;
-        }
-        for(int i=0; i<m; i++) {
-            int eno = arr[i].ss;
-            int a = getPar(u[eno]);
-            int b = getPar(v[eno]);
-            arr[i].ss = ~arr[i].ss;
-            if(a != b) {
-                ++MarkedEdge[eno];
-                unite(u[eno],v[eno]);
-                cost += arr[i].ff;
-            }
-        }
-        sort(arr,arr+m);
-        for(int i=0; i<n; i++) par[i] = i, siz[i] = 1;
-        for(int i=0; i<m; i++) {
-            int eno = ~arr[i].ss;
-            int a = getPar(u[eno]);
-            int b = getPar(v[eno]);
-            if(a != b) {
-                --MarkedEdge[eno];
-                unite(u[eno],v[eno]);
-            }
-        }
-        bool ok=true;
-        for(int i=0; i<m; i++) {
-            if(MarkedEdge[i] != 0) {
-                ok = false;
-                break;
-            }
-        }
-        if(ok) {
-            printf("%d\n",cost);
-        } else {
-            puts("Not Unique!");
-        }
+      }
+      if(ok) {
+        printf("%d\n",cost);
+      } else {
+        puts("Not Unique!");
+      }
     }
 }
