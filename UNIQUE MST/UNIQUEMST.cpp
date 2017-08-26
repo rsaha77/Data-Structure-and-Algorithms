@@ -73,18 +73,18 @@ int main() {
           --MarkedEdge[eno];
           unite(u[eno],v[eno]);
         }
-    ] }
-      bool ok=true;
-      for(int i=0; i<m; i++) {
-        if(MarkedEdge[i] != 0) {
-          ok = false;
-          break;
-        }
-      }
-      if(ok) {
-        printf("%d\n",cost);
-      } else {
-        puts("Not Unique!");
+    }
+    bool ok=true;
+    for(int i=0; i<m; i++) {
+      if(MarkedEdge[i] != 0) {
+        ok = false;
+        break;
       }
     }
+    if(ok) {
+      printf("%d\n",cost);
+    } else {
+      puts("Not Unique!");
+    }
+  }
 }
