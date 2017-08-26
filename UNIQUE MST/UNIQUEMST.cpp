@@ -36,10 +36,11 @@ int main() {
 #ifndef ONLINE_JUDGE
     freopen("in.txt","r",stdin);
 #endif
-    int testCase, t=inp();
-    for(testCase=1; testCase<=t; testCase++) {
+    for(int testCase=1, t = inp(); testCase<=t; testCase++) {
         int n=inp(), m=inp();
-        for(int i=0; i<m; i++) MarkedEdge[i]=0;
+        for(int i=0; i<m; i++) {
+            MarkedEdge[i] = 0;
+        }
         for(int i=0; i<m; i++) {
             u[i] = inp(); --u[i];
             v[i] = inp(); --v[i];
@@ -47,7 +48,10 @@ int main() {
         }
         sort(arr,arr+m);
         int cost=0;
-        for(int i=0; i<n; i++) par[i] = i, siz[i] = 1;
+        for(int i=0; i<n; i++) {
+            par[i] = i;
+            siz[i] = 1;
+        }
         for(int i=0; i<m; i++) {
             int eno = arr[i].ss;
             int a = getPar(u[eno]);
@@ -77,7 +81,10 @@ int main() {
                 break;
             }
         }
-        if(ok) printf("%d\n",cost);
-        else puts("Not Unique!");
+        if(ok) {
+            printf("%d\n",cost);
+        } else {
+            puts("Not Unique!");
+        }
     }
 }
