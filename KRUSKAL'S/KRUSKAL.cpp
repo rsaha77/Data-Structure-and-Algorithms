@@ -22,7 +22,6 @@
 #include <algorithm>
 using namespace std;
 
-
 #define ff first
 #define ss second
 typedef long long LL;
@@ -45,6 +44,7 @@ inline int getPar(int x) {
   if(par[x] != x) par[x]=getPar(par[x]); // Lazily updating par[x]
   return par[x];
 }
+
 inline void Union(int a, int b) {
   a = getPar(a), b = getPar(b);
   if (siz[a] >= siz[b]) siz[a] += siz[b], par[b] = a; // doing this bcz it will take less time to **FIND** the root
