@@ -26,20 +26,17 @@ public class MAXHEAP {
   
   static class MaxHeapService implements MaxHeapInterface {
     ArrayList <Integer> list = new ArrayList<>();
-    @Override
     
     public boolean empty() {
       return list.isEmpty();
     }
     
-    @Override
     public void swap (int a, int b) {
       int temp = list.get(a);
       list.set (a, list.get(b));
       list.set (b, temp);
     }
     
-    @Override
     public int getParent (int child) {
       if (child % 2 == 0) {
         return child / 2 - 1;
@@ -47,13 +44,11 @@ public class MAXHEAP {
       return child / 2;
     }
     
-    @Override
     public void insert (int value) {
       list.add (value);
       bubbleUp();
     }
     
-    @Override
     public void bubbleUp() {
       int child = list.size() - 1;
       int parent = getParent (child);
@@ -64,7 +59,6 @@ public class MAXHEAP {
       }
     }
     
-    @Override
     public int remove() {
       int value = list.get(0);
       swap (0, list.size() - 1);
@@ -73,7 +67,6 @@ public class MAXHEAP {
       return value;
     }
     
-    @Override
     public void bubbleDown() {
       int par = 0, lc, rc;
       while (true){
@@ -96,4 +89,3 @@ public class MAXHEAP {
     }
   }
 }
-
