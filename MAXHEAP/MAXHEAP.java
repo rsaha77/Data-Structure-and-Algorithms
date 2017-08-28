@@ -69,7 +69,7 @@ public class MAXHEAP {
     
     public void bubbleDown() {
       int par = 0, lc, rc;
-      while (true){
+      while (true) {
         lc = par * 2 + 1;
         rc = par * 2 + 2;
         int largestIdx = par;
