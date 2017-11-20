@@ -1,28 +1,26 @@
-MAXN = 500
-prime = [1] * MAXN
-facts = [0] * MAXN
-pfacts = []
+import math
+
+MAXN = 501
+isprime = [1] * MAXN
 pfactsof = []
 
-for i in range (0, MAXN):
-    foo = []
-    pfactsof.append(foo)
-for i in range (2, MAXN):
-    if prime[i] == 1:
-        pfacts.append(i)
-        for j in range (i*2, MAXN, i):
-            prime [j] = 0
-            facts [j] += 1
-            pfactsof[j].append(i)
+
+def sieve():
+    isprime[0] = isprime[1] = 0
+    for i in range(MAXN + 1):
+        foo = []
+        pfactsof.append(foo)
+    for i in range(2, int(math.sqrt(MAXN))):
+        if isprime[i]:
+            for j in range(i * i, MAXN, i):
+                isprime[j] = 0
+                pfactsof[j].append(i)
 
 
-print (pfactsof[345])
-
-'''
-for num in range (1, MAXN):
-    print(num, " ", facts [num])
-
-
-for facts in pfacts:
-    print (facts)
-'''
+sieve()
+cnt = 0
+for num in range(0, 501):
+    if isprime[num]:
+        cnt += 1
+        print (num)
+print(cnt)
