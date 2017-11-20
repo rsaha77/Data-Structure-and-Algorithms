@@ -7,7 +7,7 @@ pfactsof = []
 
 def sieve():
     isprime[0] = isprime[1] = 0
-    for i in range(MAXN + 1):
+    for i in range(MAXN):
         foo = []
         pfactsof.append(foo)
     for i in range(2, int(math.sqrt(MAXN))):
