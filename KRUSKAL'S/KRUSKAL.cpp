@@ -40,12 +40,12 @@ const int N = 1e4 + 11; // max nodes
 int par[N];
 int siz[N];
 
-inline int getPar(int x) {
+int getPar(int x) {
   if(par[x] != x) par[x]=getPar(par[x]); // Lazily updating par[x]
   return par[x];
 }
 
-inline void Union(int a, int b) {
+void Union(int a, int b) {
   a = getPar(a), b = getPar(b);
   if (siz[a] >= siz[b]) siz[a] += siz[b], par[b] = a; // doing this bcz it will take less time to **FIND** the root
   else siz[b] += siz[a], par[a] = b;
@@ -67,7 +67,7 @@ int main() {
     sort (v.begin(), v.end());
     LL ans=0;
     int opti=0;
-    for (i=0; i<int(v.size()); i++) {
+    for (int i=0; i<int(v.size()); i++) {
       pair<int, pii> it = v[i];
       if (getPar(it.ss.ff) != getPar(it.ss.ss)) {
         ++opti;
