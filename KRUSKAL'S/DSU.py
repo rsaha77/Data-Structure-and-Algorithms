@@ -9,14 +9,14 @@ class DSU:
     return self.par[x]
 
   def join(self, a, b):
-      a, b = self.get_par(a), self.get_par(b)
-      if a == b:
-          return False
-      if self.siz[a] < self.siz[b]:
-          a, b = b, a
-      self.siz[a] += self.siz[b]
-      self.par[b] = a
-      return True
+    a, b = self.get_par(a), self.get_par(b)
+    if a == b:
+      return False
+    if self.siz[a] < self.siz[b]:
+      a, b = b, a
+    self.siz[a] += self.siz[b]
+    self.par[b] = a
+    return True
 
   def is_connected(self, a, b):
     return self.get_par(a) == self.get_par(b)
@@ -25,8 +25,8 @@ class DSU:
     return self.siz[self.get_par(x)]
 
   def get_comp_nodes(self, x):
-      root = self.get_par(x)
-      return [i for i in range(len(self.par)) if self.get_par(i) == root]
+    root = self.get_par(x)
+    return [i for i in range(len(self.par)) if self.get_par(i) == root]
 
 
 def main():
